@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028376, g: 0.22571409, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -320}
+  m_AnchoredPosition: {x: 0, y: -676}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &218793292
@@ -569,7 +569,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -630,11 +630,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   images:
-  - {fileID: 21300000, guid: 0f9893adf5cfd95478b566aec949cd23, type: 3}
-  - {fileID: 21300000, guid: d6175290e008a69469980a68d1ba77d4, type: 3}
-  - {fileID: 21300000, guid: 70f3f60fd4c00ca42989a66602f21278, type: 3}
-  - {fileID: 21300000, guid: 0db19611d64ae8046a167d7db7b8b4e7, type: 3}
-  - {fileID: 21300000, guid: d2c0cdd76ef0b79419f32899625077a3, type: 3}
+  - {fileID: 21300000, guid: 1f6b162acd0c7f1418faed978c2f5e3f, type: 3}
+  - {fileID: 21300000, guid: b2552ffb8a4bee34eaa20919b356ed3d, type: 3}
+  - {fileID: 21300000, guid: 1b056ee7fc712b546b88feb5eaaa88cd, type: 3}
+  - {fileID: 21300000, guid: feb4216e1b7903547a36752b945ef1d4, type: 3}
+  - {fileID: 21300000, guid: 325b26679be53d9489878977fbe45073, type: 3}
+  - {fileID: 21300000, guid: 370072715f42e4044b2bfd478e0cc5a6, type: 3}
+  - {fileID: 21300000, guid: e5549766a22fdd84c951d266109b6c0d, type: 3}
   img: {fileID: 218793294}
 --- !u!1 &1787312582
 GameObject:

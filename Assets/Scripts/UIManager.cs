@@ -9,9 +9,11 @@ public class UIManager : MonoBehaviour
     public Image img;
 
     private int activeImage;
+    private RectTransform rt;
 
     private void Awake()
     {
+        rt = img.GetComponent(typeof(RectTransform)) as RectTransform;
         SetElement(0);
     }
 
@@ -43,5 +45,6 @@ public class UIManager : MonoBehaviour
         }
 
         img.sprite = images[activeImage];
+        rt.sizeDelta = new Vector2(images[activeImage].rect.width, images[activeImage].rect.height);
     }
 }
