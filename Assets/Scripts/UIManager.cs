@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -9,72 +10,80 @@ using UnityEngine.Video;
 public struct img
 {
     public Sprite image;
-    public VideoClip video;
+    public string question, firstAnswerText, secondAnswerText, firstAnswer, secondAnswer;
+    public Vector2 size;
 
-    public void SetEl(Image imageToSet, VideoPlayer videoImg, RectTransform rt)
+    public void SetEl(Image imageToSet, RectTransform rt, TextMeshProUGUI firstText, TextMeshProUGUI secondText, TextMeshProUGUI questionText)
     {
-        if (video)
-        {
-            if (imageToSet.gameObject.activeSelf) imageToSet.gameObject.SetActive(false);
-            if (!videoImg.gameObject.activeSelf) videoImg.gameObject.SetActive(true);
+        imageToSet.sprite = image;
 
-            videoImg.clip = video;
-            videoImg.isLooping = true;
-            videoImg.Play();
-        }
-
-        else
-        {
-            if (!imageToSet.gameObject.activeSelf) imageToSet.gameObject.SetActive(true);
-            if (videoImg.gameObject.activeSelf) videoImg.gameObject.SetActive(false);
-
-            imageToSet.sprite = image;
-
-            rt.sizeDelta = new Vector2(image.rect.width, image.rect.height);
-        }
+        rt.sizeDelta = size;
+        
+        firstText.SetText(firstAnswerText);
+        secondText.SetText(secondAnswerText);
+        questionText.SetText(question);
     }
 }
 
 
 public class UIManager : MonoBehaviour
 {
+    [Space]
     public img[] images;
     public Image img;
-    public VideoPlayer videoImg;
 
     private int activeImage;
     private RectTransform rt;
+    
+    [Space]
+    public TextMeshProUGUI finishText, question, firstText, secondText;
+    private string finish;
 
     private void Awake()
     {
-        print(img.gameObject.activeSelf);
-        print(videoImg.gameObject.activeSelf);
-
         rt = img.GetComponent(typeof(RectTransform)) as RectTransform;
         SetElement(0);
     }
 
-    public void Next()
+    public void Next(int index)
     {
+        switch (index)
+        {
+            case 0:
+            {
+                finish += images[activeImage].firstAnswer;
+                
+                break;
+            }
+            
+            case 1:
+            {
+                finish += images[activeImage].secondAnswer;
+                
+                break;
+            }
+        }
+        
         SetElement(1);
     }
 
-    public void Back()
+    private void Finish()
     {
-        SetElement(-1);
+        print("Finish");
+        
+        finishText.transform.parent.gameObject.SetActive(true);
+        img.transform.parent.gameObject.SetActive(false);
+        finishText.SetText(finish);
     }
+    
 
     private void SetElement(int i)
     {
         print(i);
-        if (activeImage + i < 0)
+        if (activeImage + i >= images.Length)
         {
-            activeImage = images.Length - activeImage + i;
-        }
+            Finish();
 
-        else if (activeImage + i >= images.Length)
-        {
-            activeImage = 0;
         }
 
         else
@@ -82,6 +91,6 @@ public class UIManager : MonoBehaviour
             activeImage += i;
         }
 
-        images[activeImage].SetEl(img, videoImg, rt);
+        images[activeImage].SetEl(img, rt, firstText, secondText, question);
     }
 }
