@@ -13,7 +13,9 @@ public struct img
     public string question, firstAnswerText, secondAnswerText, firstAnswer, secondAnswer;
     public Vector2 size;
 
-    public void SetEl(Image imageToSet, RectTransform rt, TextMeshProUGUI firstText, TextMeshProUGUI secondText, TextMeshProUGUI questionText)
+    public bool extraOption;
+
+    public void SetEl(Image imageToSet, RectTransform rt, TextMeshProUGUI firstText, TextMeshProUGUI secondText, TextMeshProUGUI questionText, GameObject extraButton)
     {
         imageToSet.sprite = image;
 
@@ -22,6 +24,8 @@ public struct img
         firstText.SetText(firstAnswerText);
         secondText.SetText(secondAnswerText);
         questionText.SetText(question);
+        
+        extraButton.SetActive(extraOption);
     }
 }
 
@@ -34,6 +38,8 @@ public class UIManager : MonoBehaviour
 
     private int activeImage;
     private RectTransform rt;
+
+    public GameObject extraButton;
     
     [Space]
     public TextMeshProUGUI finishText, question, firstText, secondText;
@@ -51,14 +57,14 @@ public class UIManager : MonoBehaviour
         {
             case 0:
             {
-                finish += images[activeImage].firstAnswer;
+                finish += images[activeImage].firstAnswer + "\n";
                 
                 break;
             }
             
             case 1:
             {
-                finish += images[activeImage].secondAnswer;
+                finish += images[activeImage].secondAnswer + "\n";
                 
                 break;
             }
@@ -91,6 +97,6 @@ public class UIManager : MonoBehaviour
             activeImage += i;
         }
 
-        images[activeImage].SetEl(img, rt, firstText, secondText, question);
+        images[activeImage].SetEl(img, rt, firstText, secondText, question, extraButton);
     }
 }
