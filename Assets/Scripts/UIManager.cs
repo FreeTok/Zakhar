@@ -99,4 +99,9 @@ public class UIManager : MonoBehaviour
 
         images[activeImage].SetEl(img, rt, firstText, secondText, question, extraButton);
     }
+
+    public void Incorrect(GameObject incorrectPanel)
+    {
+        incorrectPanel.SetActive(true);
+    }
 }
